@@ -1,0 +1,16 @@
+<launch>
+  <arg name="debug" default="false"/>
+  <arg unless="$(arg debug)" name="launch_prefix" value=""/>
+  <arg     if="$(arg debug)" name="launch_prefix" value="gdb --ex run --args"/>
+
+  <!-- 直接指定 rviz 配置文件 -->
+  <arg name="rviz_config" default="$(find ur5_gripper_moveit_config)/config/rviz_config.rviz"/>
+
+  <node name="$(anon rviz)"
+        launch-prefix="$(arg launch_prefix)"
+        pkg="rviz"
+        type="rviz"
+        args="-d $(arg rviz_config)"
+        output="screen"/>
+</launch>
+
