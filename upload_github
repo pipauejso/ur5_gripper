@@ -1,0 +1,85 @@
+git config --global user.name "pipauejso"
+git config --global user.email "1946440773@qq.com"
+
+
+
+
+
+https://github.com/pipauejso/ur5_simulation_gripper
+
+
+
+
+
+git remote add origin https://github.com/pipauejso/ur5_simulation_gripper.git
+
+
+
+
+
+
+
+
+
+ssh-keygen -t ed25519 -C "1946440773@qq.com"
+
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519  # 或 ~/.ssh/id_rsa
+
+tyj@tyj-ASUS-TUF-Gaming-F15-FX506HC-FX506HC:~$ eval "$(ssh-agent -s)"
+Agent pid 8289
+
+
+
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII6qprmfQf+SIuTKyEc+J+Zi9IsjUf+juEFYCmLwBtel 1946440773@qq.com
+
+
+
+
+
+cd /你的项目路径
+git remote -v
+git remote set-url origin git@github.com:pipauejso/ur5_simulation_gripper.git
+
+git push -u origin main （main这里改成实际的分支名）
+
+
+
+cd ~/catkin_URS/src
+git add tpsc_controller(替换成实际的包名)
+git commit -m "tpsc_controller"
+git push
+
+
+
+cd ~/catkin_URS/src
+
+rm -rf universal_robot
+
+git rm -r universal_robot
+
+git commit -m "删除 ur5_gripper_pkg 包"
+
+git push
+
+
+
+git remote add origin https://github.com/pipauejso/ur5_gripper.git
+git branch -M main
+git push -u origin main
+
+
+
+
+
+# 1. 查看有哪些改动
+git status
+
+# 2. 把改动加入暂存区（可以指定文件或用 . 表示全部）
+git add .
+
+# 3. 提交并填写说明
+git commit -m "更新说明，例如：添加UR5控制脚本"
+
+# 4. 推送到 GitHub（SSH 已设置好，不需要再输密码）
+git push
